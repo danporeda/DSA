@@ -40,3 +40,52 @@ function booWho(bool) {
 }
 
 booWho(null);
+
+
+// Title Case a Sentence
+// Return the provided string with the first letter of each word capitalized. 
+// Make sure the rest of the word is in lower case.
+// For the purpose of this exercise, you should also capitalize 
+// connecting words like the and of.
+
+// #1
+function titleCase(str) {
+  const arr = str.split(" ");
+  const titledArr = [];
+  for (let word of arr) {
+    let titledWord = '';
+    for (let l = 0; l < word.length; l++) {
+      if (l === 0) {
+        titledWord += word[l].toUpperCase();
+      } else {
+        titledWord += word[l].toLowerCase();
+      }
+    }
+    titledArr.push(titledWord);
+  }
+  return titledArr.join(" ");
+}
+
+titleCase("I'm a little tea pot");
+
+// #2
+function titleCase(str) {
+  const arr = str.split(" ");
+
+  const titledArr = arr.map((word) => {
+    let titledWord = '';
+
+    for (let l = 0; l < word.length; l++) {
+      if (l === 0) {
+        titledWord += word[l].toUpperCase();
+      } else {
+        titledWord += word[l].toLowerCase();
+      }
+    }
+
+    return titledWord;
+  })
+  return titledArr.join(" ");
+}
+
+titleCase("I'm a little tea pot");
