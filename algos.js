@@ -132,21 +132,59 @@ bouncer([7, "ate", "", false, 9]);
 //  once the array has been sorted it will look like [3,5,20] 
 //  and 19 is less than 20 (index 2) and greater than 5 (index 1).
 
+// #1
 function getIndexToIns(arr, num) {
-  const sortedArr = arr.sort((a,b) => a - b);
+  arr.sort((a,b) => a - b);
 
-  let index;
-  for (let i = 0; i <= sortedArr.length; i++) {
-    if (num <= sortedArr[i]) {
-      index = i;
-      break;
+  for (let i = 0; i < arr.length; i++) {
+    if (num <= arr[i]) {
+      return i;
     } 
-    if (i === sortedArr.length && !index) {
-      index = i;
-    }
   }
 
-  return index;
+  return arr.length;
 }
 
 getIndexToIns([40, 60], 50);
+
+// #2
+function getIndexToIns(arr, num) {
+  return arr.filter(val => num > val).length;
+}
+
+// #3
+function getIndexToIns(arr, num) {
+  const index = arr
+  .sort((a,b) => a - b)
+  .findIndex((i) => num <= i);
+
+  return index === -1 ? arr.length : index;
+}
+
+// #4
+function getIndexToIns(arr, num) {
+  return arr
+  .concat(num)
+  .sort((a, b) => a - b)
+  .indexOf(num);
+}
+
+
+// Mutations
+// Return true if the string in the first element of the array contains 
+// all of the letters of the string in the second element of the array.
+// For example, ["hello", "Hello"], should return true because all of the 
+// letters in the second string are present in the first, ignoring case.
+// The arguments ["hello", "hey"] should return false because the string 
+// hello does not contain a y.
+// Lastly, ["Alien", "line"], should return true because all of the letters 
+// in line are present in Alien.
+
+function mutation(arr) {
+  for (let letter of arr[1]) {
+    if (!arr[0].toLowerCase().includes(letter.toLowerCase())) return false;
+  }
+  return true;
+}
+
+mutation(["hello", "hey"]);
