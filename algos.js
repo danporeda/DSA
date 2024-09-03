@@ -203,3 +203,17 @@ function chunkArrayInGroups(arr, size) {
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+
+// Object Orieted Programming
+
+function Bird(name, color) {
+  this.name = name,
+  this.color = color
+}
+
+Bird.prototype.legs = 2;
+
+const raven = new Bird("joey", "black");
+
+Bird.prototype.isPrototypeOf(Bird) // true
