@@ -216,4 +216,42 @@ Bird.prototype.legs = 2;
 
 const raven = new Bird("joey", "black");
 
-Bird.prototype.isPrototypeOf(Bird) // true
+raven instanceof Bird // true
+Bird.prototype.isPrototypeOf(raven) // true
+raven.contructor === Bird; // true
+
+// inheritance 
+
+function Animal() {};
+Animal.prototype = {
+  constructor: Animal,
+  eat: () => console.log('nom nom nom'),
+  poop: () => console.log('plop plop plop')
+}
+
+let mammal = Object.create(Animal.prototype);
+
+function Butterfly(color) {
+  this.color = color;
+};
+
+Butterfly.prototype = Object.create(Animal.prototype);
+Butterfly.prototype.constructor = Butterfly;
+Butterfly.constructor.fly = function() {
+  console.log('flap flap flap');
+};
+Butterfly.prototype.poop = () => console.log('squirt squirt squirt');
+
+let marmalade = new Butterfly('orange');
+marmalade.eat();
+marmalade.fly();
+
+// mixins
+
+const laughMixin = function(obj) {
+  obj.laugh = () => 'ha ha ha';
+}
+laughMixin(marmalade);
+marmalade.laugh() // ha ha ha
+
+
