@@ -261,4 +261,25 @@ function Snail(shell) {
   this.getAction = () => console.log("Snail's action is " + action);
 }
 
+const rupert = new Snail('spiral');
+
+// IIFE - immediately invoked function expression
+// IIFE module
+
+let GGAllinModule = (function() {
+  return {
+    drinkMixin: function(obj) {
+      obj.drink = () => 'Drink!';
+    },
+    fightMixin: function(obj) {
+      obj.fight = () => 'Fight!';
+    },
+    fockMixin: function(obj) {
+      obj.fock = () => 'Fock!'
+    }
+  }
+})();
+
+GGAllinModule.fightMixin(rupert);
+rupert.fight();
 
