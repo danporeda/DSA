@@ -247,11 +247,18 @@ marmalade.eat();
 marmalade.fly();
 
 // mixins
-
 const laughMixin = function(obj) {
   obj.laugh = () => 'ha ha ha';
 }
 laughMixin(marmalade);
 marmalade.laugh() // ha ha ha
+
+// closure
+function Snail(shell) {
+  this.shell = shell;  // shell is public
+  this.species = 'shelled slug'; // also public
+  let action = 'sloosh'; // action is private, has 'closure'. can only be changed/accessed within the constructor
+  this.getAction = () => console.log("Snail's action is " + action);
+}
 
 
